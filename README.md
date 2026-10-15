@@ -6,7 +6,7 @@
 
 **Track:** Artificial Intelligence / Computer Vision / IoT
 
-**Supervisor:** Dr. Name
+**Supervisor:** Dr. Walaa Omar
 
 ---
 
