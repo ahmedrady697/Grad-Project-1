@@ -10,15 +10,18 @@ uvicorn backend.main:app --reload
 | Endpoint | Purpose |
 |----------|---------|
 | `GET /health` | Health check |
-| `POST /events` | AI modules post events here (format: `ai/shared/schemas/event.py`) |
-| `GET /events?module=behavior&limit=100` | Frontend reads recent events |
+| `POST /events` | AI modules post events here. Validated against `ai/shared/schemas/event.py`; bad events get HTTP 422 |
+| `GET /events?module=&type=&student_id=&limit=100` | Frontend reads recent events (all filters optional) |
+| `GET /attendance?date=YYYY-MM-DD` | Students marked present (first sighting each, UTC date) |
 
-`main.py` keeps events in memory for now.
+`main.py` keeps events in memory for now, so they are lost on restart.
+
+Tests: `pytest tests/test_backend.py` (needs `fastapi` and `httpx`).
 
 ## Plan
 
 - [ ] Store events in SQLite (SQLAlchemy)
-- [ ] Attendance records + endpoints per module
+- [ ] Sessions (class + date) so attendance is per lecture, not per day
 - [ ] WebSocket for live events and live video stream
 - [ ] Authentication (teacher/admin)
 - [ ] Export attendance to CSV/Excel
