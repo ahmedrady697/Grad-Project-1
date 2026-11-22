@@ -39,3 +39,6 @@ attendance_faces/
 Thumbs.db
 .vscode/
 .idea/
+
+# Never nest a clone of this repo inside itself
+Grad-Project-1/
