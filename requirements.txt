@@ -13,4 +13,5 @@ pydantic
 
 # Dev
 pytest
+httpx                # backend tests (FastAPI TestClient)
 ruff

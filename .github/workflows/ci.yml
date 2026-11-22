@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      # Light install only: heavy CV packages are not needed for these checks
-      - run: pip install ruff pytest
+      # Light install only: no cv2, torch or insightface (tests use a fake face analyzer)
+      - run: pip install ruff pytest numpy fastapi httpx
       - run: ruff check .
       - run: pytest -q
